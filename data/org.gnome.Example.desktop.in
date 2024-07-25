@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=lemmy-reader
+Exec=lemmy-reader
+Icon=org.gnome.Example
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
