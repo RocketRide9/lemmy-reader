@@ -6,7 +6,8 @@ edition = "2021"
 [dependencies]
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 gtk = { version = "0.9", package = "gtk4" }
-lemmy-client = "1.0.2"
+lemmy-client = { git = "https://github.com/LemmyNet/lemmy-client-rs.git", tag = "v0.19.7" }
+tokio = { version = "1.39.1", features = ["tokio-macros", "rt", "macros", "rt-multi-thread"] }
 
 [dependencies.adw]
 package = "libadwaita"

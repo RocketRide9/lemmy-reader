@@ -3,6 +3,7 @@ mod application;
 mod config;
 mod window;
 mod post;
+mod post_widget;
 
 use self::application::LemmyReaderApplication;
 use self::window::LemmyReaderWindow;
@@ -12,7 +13,10 @@ use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 use gtk::{gio, glib};
 use gtk::prelude::*;
 
-fn main() -> glib::ExitCode {
+use tokio;
+
+#[tokio::main]
+async fn main() -> glib::ExitCode {
     // Set up gettext translations
     bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8")

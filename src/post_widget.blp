@@ -1,0 +1,115 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $LemmyReaderLemmyPostWidget: Box {
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-start: 10;
+    margin-end: 10;
+    orientation: vertical;
+
+    Box {
+        margin-top: 20;
+        margin-bottom: 20;
+        margin-start: 20;
+        margin-end: 20;
+        orientation: vertical;
+
+        Box {
+            orientation: horizontal;
+            spacing: 10;
+
+            Adw.Avatar {
+                size: 60;
+            }
+
+            Box {
+                orientation: vertical;
+                spacing: 10;
+
+                Box {
+                    orientation: horizontal;
+
+                    Label author_nick {
+                        label: "Author nickname";
+                    }
+
+                    Label author_handle {
+                        halign: start;
+                        label: "Author handle";
+                    }
+
+                    Label post_date {
+                        label: "20 minutes ago";
+                    }
+                }
+
+                Box {
+                    orientation: horizontal;
+
+                    Label title {
+                        label: "Some titlex";
+                    }
+                }
+            }
+        }
+
+        Box {
+            margin-top: 10;
+            margin-bottom: 10;
+            margin-start: 10;
+            margin-end: 10;
+            spacing: 10;
+
+            orientation: vertical;
+
+            Stack media_stack {
+                StackPage loading_media_page {
+                    child: Spinner {
+                        spinning: true;
+                        hexpand: true;
+                    };
+                }
+
+                StackPage img_page {
+                    child: Picture post_img {
+                        height-request: 400;                        
+
+                        styles ['view']
+                    };
+                }
+                
+                StackPage video_page {
+                    child: Video post_video {
+                        height-request: 400;
+
+                        styles ["view"]
+                    };
+                }
+            }
+            Label post_text {
+                label: "Post text. Some more text. Even more text for TextView\n";  
+                hexpand: true;
+                halign: start;
+                wrap: true;
+                wrap-mode: word_char;
+                selectable: true;
+            }
+        }
+
+        Box {
+            orientation: horizontal;
+
+            Button {}
+
+            Button {}
+
+            Button {}
+        }
+    }
+
+    styles [
+        "card",
+        "activatable"
+    ]
+}

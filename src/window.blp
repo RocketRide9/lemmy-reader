@@ -26,13 +26,18 @@ template $LemmyReaderWindow: Adw.ApplicationWindow {
           label: "Community address";
         }
         Entry community_entry {
-          placeholder-text: "touhou@lemmy.world";
+          placeholder-text: "e.g. touhou@lemmy.world";
+          text: "touhou@lemmy.world";
         }
       }
       ScrolledWindow {
         hscrollbar-policy: never;
-        ListView posts_view {
-        
+        Adw.Clamp {
+          ListView posts_view {
+            vexpand: true;
+
+            styles ['transparent-background']
+          }
         }
       }
     };
