@@ -91,20 +91,24 @@ impl LemmyPostWidget {
             let img_file = gio::File::for_uri(img_uri.as_str());
             let img = &imp.post_img;
             
+            println!("image uri = {uri}", uri = img_file.uri());
+            
             spawn_future_local(clone!(
                 #[weak]
                 img,
+                #[weak]
+                imp,
                 async move {
                     if let Ok(texture) = spawn_blocking(move || gtk::gdk::Texture::from_file(&img_file))
                         .await
                         .expect("Couldn't spawn blocking to download image")
                     {
                         img.set_paintable(Some(&texture));
+                        imp.media_stack.set_visible_child(imp.post_img.upcast_ref::<gtk::Widget>());            
                     }
                 }
             ));
 
-            imp.media_stack.set_visible_child(imp.post_img.upcast_ref::<gtk::Widget>());            
         } else if let Some(video_uri) = d.post.url {
             let vid_file = gio::File::for_uri(video_uri.as_str());
             if let Some(ext) = video_uri.as_str().split('.').last() {
