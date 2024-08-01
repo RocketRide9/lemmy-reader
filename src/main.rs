@@ -4,6 +4,7 @@ mod config;
 mod window;
 mod post;
 mod post_widget;
+mod posts_model;
 
 use self::application::LemmyReaderApplication;
 use self::window::LemmyReaderWindow;

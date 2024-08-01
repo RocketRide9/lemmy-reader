@@ -19,8 +19,10 @@ template $LemmyReaderLemmyPostWidget: Box {
             orientation: horizontal;
             spacing: 10;
 
-            Adw.Avatar {
+            Adw.Avatar avatar {
                 size: 60;
+
+                show-initials: true;
             }
 
             Box {
@@ -64,26 +66,33 @@ template $LemmyReaderLemmyPostWidget: Box {
             orientation: vertical;
 
             Stack media_stack {
-                StackPage loading_media_page {
-                    child: Spinner {
+                StackPage {
+                    child: Spinner media_spinner {
                         spinning: true;
                         hexpand: true;
                     };
                 }
 
-                StackPage img_page {
+                StackPage {
                     child: Picture post_img {
                         height-request: 400;                        
 
                         styles ['view']
                     };
                 }
-                
-                StackPage video_page {
+                StackPage {
                     child: Video post_video {
                         height-request: 400;
 
+                        // autoplay: true;
+                        // loop: true;
+                        
                         styles ["view"]
+                    };
+                }
+                StackPage {
+                    child: Image {
+                        icon-name: "image-broken";
                     };
                 }
             }
